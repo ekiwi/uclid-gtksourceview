@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ This file is part of GtkSourceView
+
+ Authors: Kevin Läufer <laeufer@eecs.berkeley.edu> and Pramod Subramanyan <pramod.subramanyan@gmail.com>
+ Copyright (C) 2018 Kevin Läufer <laeufer@eecs.berkeley.edu> and Pramod Subramanyan <pramod.subramanyan@gmail.com>
+
+ GtkSourceView is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ GtkSourceView is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+
+<!-- Automatically generated from uclid.vim using convert.py. Do not edit! -->
+
+<language id="uclid" _name="Uclid" version="2.0" _section="Source">
+
+  <metadata>
+    <property name="globs">*.ucl</property>
+    <property name="mimetypes">text/plain</property>
+    <property name="line-comment-start">//</property>
+    <property name="block-comment-start">/*</property>
+    <property name="block-comment-end">*/</property>
+  </metadata>
+  <styles>
+    <style id="comment" name="comment" map-to="def:comment"/>
+    <style id="Identifier" name="Identifier" map-to="def:type"/>
+    <style id="Type" name="Type" map-to="def:type"/>
+    <style id="Keyword" name="Keyword" map-to="def:keyword"/>
+    <style id="Conditional" name="Conditional" map-to="def:keyword"/>
+    <style id="StorageClass" name="StorageClass" map-to="def:keyword"/>
+    <style id="Constant" name="Constant" map-to="def:constant"/>
+    <style id="Define" name="Define" map-to="def:preprocessor"/>
+    <style id="Special" name="Special" map-to="def:special-constant"/>
+    <style id="Number" name="Number" map-to="def:decimal"/>
+  </styles>
+
+  <definitions>
+
+    <context id="ucl4Type" style-ref="Type">
+      <keyword>boolean</keyword>
+      <keyword>integer</keyword>
+      <keyword>enum</keyword>
+      <keyword>record</keyword>
+    </context>
+
+    <context id="ucl4Expr" style-ref="StorageClass">
+      <keyword>forall</keyword>
+      <keyword>exists</keyword>
+      <keyword>Lambda</keyword>
+      <keyword>in</keyword>
+    </context>
+
+    <context id="ucl4Stmt" style-ref="Conditional">
+      <keyword>if</keyword>
+      <keyword>then</keyword>
+      <keyword>else</keyword>
+      <keyword>assert</keyword>
+      <keyword>assume</keyword>
+      <keyword>havoc</keyword>
+      <keyword>for</keyword>
+      <keyword>skip</keyword>
+      <keyword>case</keyword>
+      <keyword>esac</keyword>
+      <keyword>default</keyword>
+    </context>
+
+    <context id="ucl4Decl" style-ref="Keyword">
+      <keyword>module</keyword>
+      <keyword>init</keyword>
+      <keyword>next</keyword>
+      <keyword>control</keyword>
+      <keyword>function</keyword>
+      <keyword>procedure</keyword>
+      <keyword>returns</keyword>
+      <keyword>call</keyword>
+      <keyword>type</keyword>
+      <keyword>var</keyword>
+      <keyword>input</keyword>
+      <keyword>output</keyword>
+      <keyword>const</keyword>
+      <keyword>property</keyword>
+      <keyword>invariant</keyword>
+      <keyword>synthesis</keyword>
+      <keyword>grammar</keyword>
+      <keyword>requires</keyword>
+      <keyword>ensures</keyword>
+      <keyword>modifies</keyword>
+      <keyword>sharedvar</keyword>
+      <keyword>instance</keyword>
+      <keyword>axiom</keyword>
+      <keyword>define</keyword>
+    </context>
+
+    <context id="ucl4Cmd" style-ref="Define">
+      <keyword>unroll</keyword>
+      <keyword>check</keyword>
+      <keyword>print_module</keyword>
+      <keyword>print_cex</keyword>
+      <keyword>print_results</keyword>
+      <keyword>k_induction_base</keyword>
+      <keyword>k_induction_step</keyword>
+      <keyword>induction</keyword>
+      <keyword>clear_context</keyword>
+      <keyword>synthesize_invariant</keyword>
+    </context>
+
+    <context id="ucl4Constant" style-ref="Constant">
+      <keyword>false</keyword>
+      <keyword>true</keyword>
+    </context>
+
+    <context id="ucl4UsrType" style-ref="Identifier">
+      <match extended="true">
+        [A-za-z_][A-Za-z0-9_\.]*_t\w\@!
+      </match>
+    </context>
+
+    <context id="ucl4BVType" style-ref="Type">
+      <match extended="true">
+        bv\d+
+      </match>
+    </context>
+
+    <context id="ucl4Number" style-ref="Number">
+      <match extended="true">
+        \(0[0-7]*\|0[xX]\x+\|\d+\)[lL]
+      </match>
+    </context>
+
+    <context id="uclid">
+      <include>
+        <context ref="ucl4Type" />
+        <context ref="ucl4Expr" />
+        <context ref="ucl4Stmt" />
+        <context ref="ucl4Decl" />
+        <context ref="ucl4Cmd" />
+        <context ref="ucl4Constant" />
+        <context ref="ucl4UsrType" />
+        <context ref="ucl4BVType" />
+        <context ref="ucl4Number" />
+      </include>
+    </context>
+  </definitions>
+</language>
