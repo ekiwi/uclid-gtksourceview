@@ -212,8 +212,12 @@ class GtkSourceEmitter(StyleVisitor):
 		self.end_context()
 
 	def visit_region(self, ii, start, end):
-		# handled in the meta data section
-		assert ii in {'ucl4MultilineComment', 'ucl4TrailingComment'}
+		start = start.replace('/', '\\/')
+		end = end.replace('/', '\\/')
+		self.start_context(ii)
+		self.print(f'      <start>{start}</start>')
+		self.print(f'      <end>{end}</end>')
+		self.end_context()
 
 	def run(self, filename):
 		self.contexts = []

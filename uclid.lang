@@ -140,6 +140,16 @@
       </match>
     </context>
 
+    <context id="ucl4MultilineComment" style-ref="comment">
+      <start>\/\*</start>
+      <end>\*\/</end>
+    </context>
+
+    <context id="ucl4TrailingComment" style-ref="comment">
+      <start>\/\/</start>
+      <end>$</end>
+    </context>
+
     <context id="uclid">
       <include>
         <context ref="ucl4Type" />
@@ -151,6 +161,8 @@
         <context ref="ucl4UsrType" />
         <context ref="ucl4BVType" />
         <context ref="ucl4Number" />
+        <context ref="ucl4MultilineComment" />
+        <context ref="ucl4TrailingComment" />
       </include>
     </context>
   </definitions>
